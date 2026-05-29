@@ -2,7 +2,7 @@
 
 This is the starter project for Conductor, a macOS app for running multiple coding agents in parallel in isolated git worktree workspaces.
 
-The app itself is a small React + TypeScript + Vite project. It gives new Conductor workspaces something quick to install, run, edit, review, and ship.
+The app is intentionally tiny: one dependency-free `index.html` file plus a few static assets in `public/`. There is no install step, build step, package manager, framework, or dev server.
 
 ## How Conductor Uses This Project
 
@@ -11,49 +11,31 @@ Conductor creates each workspace as its own git worktree and branch. The checked
 ```json
 {
   "scripts": {
-    "setup": "npm install",
-    "run": "npm run dev"
+    "setup": "true",
+    "run": "open index.html"
   }
 }
 ```
 
-When you create a workspace, Conductor runs the setup script from the workspace directory. When you click Run, Conductor starts the Vite dev server.
+When you create a workspace, setup succeeds immediately. When you click Run on macOS, Conductor opens the HTML file in your default browser.
 
 ## Local Development
 
-Install dependencies:
+Open the app directly:
 
 ```sh
-npm install
+open index.html
 ```
 
-Start the dev server:
-
-```sh
-npm run dev
-```
-
-Build for production:
-
-```sh
-npm run build
-```
-
-Run lint checks:
-
-```sh
-npm run lint
-```
+Edit `index.html`, then refresh the browser.
 
 ## Project Structure
 
-- `src/App.tsx` contains the starter app UI and interactions.
-- `src/App.css` and `src/index.css` contain the app styling.
+- `index.html` contains the UI, styling, and interaction logic.
+- `public/` contains static assets used by the page.
 - `conductor.json` contains the shared Conductor workspace scripts.
 - `.context/` is available in Conductor workspaces for gitignored notes and handoff files between agents.
 
 ## Learn More
 
 - [Conductor docs](https://conductor.build/docs)
-- [Vite docs](https://vite.dev)
-- [React docs](https://react.dev)

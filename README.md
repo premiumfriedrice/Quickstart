@@ -6,15 +6,14 @@ The app is intentionally tiny: one dependency-free `index.html` file plus a few 
 
 ## How Conductor Uses This Project
 
-Conductor creates each workspace as its own git worktree and branch. The checked-in `conductor.json` tells Conductor how to prepare and run this starter app:
+Conductor creates each workspace as its own git worktree and branch. The checked-in `.conductor/settings.toml` tells Conductor how to prepare and run this starter app:
 
-```json
-{
-  "scripts": {
-    "setup": "true",
-    "run": "open index.html"
-  }
-}
+```toml
+"$schema" = "https://conductor.build/schemas/settings.repo.schema.json"
+
+[scripts]
+setup = "true"
+run = "open index.html"
 ```
 
 When you create a workspace, setup succeeds immediately. When you click Run on macOS, Conductor opens the HTML file in your default browser.
@@ -33,7 +32,7 @@ Edit `index.html`, then refresh the browser.
 
 - `index.html` contains the UI, styling, and interaction logic.
 - `public/` contains static assets used by the page.
-- `conductor.json` contains the shared Conductor workspace scripts.
+- `.conductor/settings.toml` contains the shared Conductor workspace scripts.
 - `.context/` is available in Conductor workspaces for gitignored notes and handoff files between agents.
 
 ## Learn More
